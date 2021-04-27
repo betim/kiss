@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+mkdir build
+cd build
+
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+	-DUSE_YAML=OFF \
+	-DUSE_NVML=OFF \
+
+make
+make DESTDIR="$1" install

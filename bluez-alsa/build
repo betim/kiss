@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+autoreconf --install
+
+mkdir build 
+cd build
+
+../configure \
+    --prefix=/usr \
+    --enable-aac \
+    --enable-ofono \
+    --enable-debug
+
+make
+make DESTDIR="$1" install

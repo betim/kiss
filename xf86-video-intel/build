@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+./autogen.sh
+./configure \
+	--prefix=/usr \
+	--libexecdir=/usr/lib \
+	--enable-kms-only \
+	--disable-xvmc \
+	--disable-valgrind
+
+make
+make DESTDIR="$1" install

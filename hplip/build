@@ -1,0 +1,24 @@
+#!/bin/sh -e
+
+./configure --with-hpppddir=/usr/share/ppd/HP \
+	--libdir=/usr/lib64 \
+	--prefix=/usr \
+	--disable-qt4 \
+	--disable-libusb01_build \
+	--disable-doc-build \
+	--enable-cups-ppd-install \
+	--disable-foomatic-drv-install \
+	--disable-foomatic-ppd-install \
+	--disable-hpijs-install \
+	--disable-udev_sysfs_rules \
+	--disable-policykit \
+	--disable-cups-drv-install \
+	--enable-hpcups-install \
+	--enable-network-build \
+	--enable-dbus-build \
+	--disable-scan-build \
+	--disable-fax-build
+
+make
+libtool --finish /usr/lib64
+make DESTDIR="$1" install

@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --enable-werror
+
+make
+make check
+make DESTDIR="$1" install
